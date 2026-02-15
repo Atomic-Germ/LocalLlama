@@ -1,0 +1,294 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap");
+
+:root {
+  --bg: #0f1012;
+  --panel: #17191d;
+  --panel-alt: #1f2229;
+  --accent: #ff8a3d;
+  --accent-2: #6de1ff;
+  --text: #f5f2ea;
+  --muted: #98a0aa;
+  --danger: #ff5f6d;
+  --shadow: rgba(0, 0, 0, 0.35);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Space Grotesk", sans-serif;
+  color: var(--text);
+  background: var(--bg);
+  min-height: 100vh;
+}
+
+.bg {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at 20% 20%, rgba(255, 138, 61, 0.2), transparent 45%),
+    radial-gradient(circle at 80% 10%, rgba(109, 225, 255, 0.2), transparent 40%),
+    radial-gradient(circle at 30% 80%, rgba(255, 255, 255, 0.08), transparent 35%);
+  z-index: -1;
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 36px;
+}
+
+.brand {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.logo {
+  width: 52px;
+  height: 52px;
+  border-radius: 16px;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(135deg, var(--accent), #ffb13d);
+  color: #161616;
+  font-weight: 700;
+}
+
+.brand h1 {
+  margin: 0;
+  font-size: 24px;
+}
+
+.brand p {
+  margin: 4px 0 0;
+  color: var(--muted);
+}
+
+.status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--panel);
+  padding: 8px 14px;
+  border-radius: 999px;
+  box-shadow: 0 12px 24px var(--shadow);
+}
+
+.status .dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #999;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 280px minmax(0, 1fr) 320px;
+  gap: 20px;
+  padding: 0 28px 28px;
+}
+
+.panel {
+  background: var(--panel);
+  border-radius: 18px;
+  padding: 16px;
+  box-shadow: 0 16px 40px var(--shadow);
+  backdrop-filter: blur(6px);
+  min-height: 200px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.panel-header h2 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.panel-section h3 {
+  margin: 12px 0 8px;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.list.compact {
+  gap: 4px;
+}
+
+.list-item {
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: var(--panel-alt);
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.list-item.active {
+  border: 1px solid var(--accent);
+}
+
+.btn {
+  border: none;
+  background: var(--accent);
+  color: #141414;
+  padding: 8px 14px;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn.primary {
+  background: linear-gradient(135deg, var(--accent), #ffb13d);
+}
+
+.btn.ghost {
+  background: transparent;
+  border: 1px solid #2c2f36;
+  color: var(--text);
+}
+
+.btn.ghost.danger {
+  border-color: var(--danger);
+  color: var(--danger);
+}
+
+.controls {
+  display: flex;
+  gap: 8px;
+}
+
+.controls input,
+.controls select {
+  flex: 1;
+}
+
+input,
+select,
+textarea {
+  background: #101215;
+  border: 1px solid #2a2e36;
+  color: var(--text);
+  border-radius: 12px;
+  padding: 8px 10px;
+  font-family: inherit;
+}
+
+textarea {
+  resize: vertical;
+}
+
+.meta {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.log {
+  background: #0e1013;
+  border-radius: 12px;
+  padding: 8px;
+  font-size: 12px;
+  height: 120px;
+  overflow: auto;
+}
+
+.chat {
+  gap: 12px;
+}
+
+.messages {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  overflow: auto;
+  padding-right: 6px;
+  min-height: 300px;
+}
+
+.message {
+  display: grid;
+  grid-template-columns: 90px 1fr;
+  gap: 12px;
+  padding: 12px 14px;
+  border-radius: 14px;
+  background: #1b1e25;
+}
+
+.message-role {
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 12px;
+  color: var(--accent-2);
+}
+
+.message-content {
+  white-space: pre-wrap;
+  line-height: 1.4;
+}
+
+.message.tool .message-role {
+  color: var(--accent);
+}
+
+.composer {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.composer-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.settings-grid {
+  display: grid;
+  gap: 12px;
+}
+
+.settings-grid label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.toggle {
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+
+@media (max-width: 1100px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+  .sidebar,
+  .settings {
+    order: 2;
+  }
+  .chat {
+    order: 1;
+  }
+}

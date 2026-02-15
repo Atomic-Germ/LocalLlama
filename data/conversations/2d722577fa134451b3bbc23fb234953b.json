@@ -1,0 +1,30 @@
+{
+  "id": "2d722577fa134451b3bbc23fb234953b",
+  "title": "New chat",
+  "created_at": "2026-02-15T20:43:09.860774+00:00",
+  "updated_at": "2026-02-15T20:43:48.681165+00:00",
+  "system": "",
+  "settings": {
+    "model": "phi3:latest",
+    "options": {
+      "temperature": 0.7,
+      "top_p": 0.9,
+      "top_k": 40,
+      "min_p": 0,
+      "num_predict": 512,
+      "num_ctx": 4096
+    },
+    "keep_alive": "5m",
+    "stream": true
+  },
+  "messages": [
+    {
+      "role": "user",
+      "content": "How many shoes?"
+    },
+    {
+      "role": "assistant",
+      "content": "To provide an answer, I would need specific context or data regarding the number of shoes in question. Since no details were given with your query, it's not possible to give a precise numerical response without additional information. If you are asking about how one might calculate this if they had certain parameters (such as foot size distribution within a population), I could provide an estimate based on statistical data and assumptions regarding average shoe sizes or the number of people in a given demographic, but for now, with no context provided:\n\nHow many shoes? Without specific information about where you want to count shoes (individuals, pairs per person, total population size), it's impossible to give an accurate answer. Please provide more details!"
+    }
+  ]
+}

@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>LocalLlama</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <div class="bg" aria-hidden="true"></div>
+    <header class="topbar">
+      <div class="brand">
+        <div class="logo">LL</div>
+        <div>
+          <h1>LocalLlama</h1>
+          <p>Ollama control room</p>
+        </div>
+      </div>
+      <div class="status" id="status">
+        <span class="dot"></span>
+        <span>Connecting...</span>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="panel sidebar">
+        <div class="panel-header">
+          <h2>Conversations</h2>
+          <button id="new-chat" class="btn">New</button>
+        </div>
+        <div id="conversation-list" class="list"></div>
+        <div class="panel-section">
+          <h3>Models</h3>
+          <div class="controls">
+            <select id="model-select"></select>
+            <button id="refresh-models" class="btn ghost">Refresh</button>
+          </div>
+          <div id="model-meta" class="meta"></div>
+        </div>
+        <div class="panel-section">
+          <h3>Running</h3>
+          <div id="running-list" class="list compact"></div>
+        </div>
+        <div class="panel-section">
+          <h3>Pull model</h3>
+          <div class="controls">
+            <input id="pull-input" placeholder="model name" />
+            <button id="pull-btn" class="btn">Pull</button>
+          </div>
+          <pre id="pull-log" class="log"></pre>
+        </div>
+      </aside>
+
+      <section class="panel chat">
+        <div class="panel-header">
+          <h2 id="chat-title">New chat</h2>
+          <div class="actions">
+            <button id="rename-chat" class="btn ghost">Rename</button>
+            <button id="delete-chat" class="btn ghost danger">Delete</button>
+          </div>
+        </div>
+        <div id="messages" class="messages"></div>
+        <div class="composer">
+          <textarea id="user-input" rows="3" placeholder="Ask the model anything..."></textarea>
+          <div class="composer-actions">
+            <button id="stop-btn" class="btn ghost" disabled>Stop</button>
+            <button id="send-btn" class="btn primary">Send</button>
+          </div>
+        </div>
+      </section>
+
+      <aside class="panel settings">
+        <div class="panel-header">
+          <h2>Settings</h2>
+        </div>
+        <div class="settings-grid">
+          <label>System prompt
+            <textarea id="system-input" rows="4" placeholder="You are a helpful assistant."></textarea>
+          </label>
+          <label>Temperature
+            <input id="temperature" type="number" min="0" max="2" step="0.1" value="0.7" />
+          </label>
+          <label>Top P
+            <input id="top-p" type="number" min="0" max="1" step="0.05" value="0.9" />
+          </label>
+          <label>Top K
+            <input id="top-k" type="number" min="0" max="100" step="1" value="40" />
+          </label>
+          <label>Min P
+            <input id="min-p" type="number" min="0" max="1" step="0.05" value="0" />
+          </label>
+          <label>Max tokens
+            <input id="num-predict" type="number" min="1" step="1" value="512" />
+          </label>
+          <label>Context size
+            <input id="num-ctx" type="number" min="256" step="256" value="4096" />
+          </label>
+          <label>Stop sequences
+            <input id="stop" placeholder="comma separated" />
+          </label>
+          <label>Keep alive
+            <input id="keep-alive" placeholder="5m or 0" value="5m" />
+          </label>
+          <label>Think
+            <select id="think">
+              <option value="">Off</option>
+              <option value="low">Low</option>
+              <option value="medium">Medium</option>
+              <option value="high">High</option>
+            </select>
+          </label>
+          <label>Format
+            <select id="format">
+              <option value="">None</option>
+              <option value="json">JSON</option>
+            </select>
+          </label>
+          <label class="toggle">
+            <input id="stream" type="checkbox" checked />
+            <span>Stream responses</span>
+          </label>
+        </div>
+      </aside>
+    </main>
+
+    <template id="message-template">
+      <div class="message">
+        <div class="message-role"></div>
+        <div class="message-content"></div>
+      </div>
+    </template>
+
+    <script src="/static/app.js"></script>
+  </body>
+</html>
